@@ -23,6 +23,14 @@ const resolvers = {
     obtenerUsuario: async (_, {}, ctx) => {
       return ctx.usuario;
     },
+    obtenerUsuarios: async () => {
+      try {
+        const vendedores = await Usuarios.find({});
+        return vendedores;
+      } catch (error) {
+        console.log(error);
+      }
+    },
 
     // ! Productos **************
     obtenerProductos: async () => {
