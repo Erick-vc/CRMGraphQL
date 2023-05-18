@@ -1,9 +1,11 @@
 import { ApolloServer } from "apollo-server";
-import typeDefs from "../db/schema";
-import resolvers from "../db/resolvers";
-import conectarDB from "../config/db";
+import typeDefs from "../db/schema.js";
+import resolvers from "../db/resolvers.js";
+import conectarDB from "../config/db.js";
 import jwt from "jsonwebtoken";
-require("dotenv").config({ path: "variables.env" });
+import { config } from "dotenv";
+
+config({path: 'variables.env'});
 
 // ! Conectar a la base da datos
 conectarDB();
@@ -34,6 +36,6 @@ const server = new ApolloServer({
 });
 
 // arracancar el servidor
-server.listen({port: process.env.PORT || 4000 }).then(({ url }) => {
+server.listen({port: process.env.PORT || 5000 }).then(({ url }) => {
   console.log(`Servidor listo en la URL ${url}`);
 });

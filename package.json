@@ -2,9 +2,10 @@
   "name": "crmgraphqlcurso",
   "version": "1.0.0",
   "description": "Curso de GraphQL",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "node .",
+    "start": "node src/index.js --exec babel-node",
     "dev": "nodemon src/index.js --exec babel-node"
   },
   "repository": {

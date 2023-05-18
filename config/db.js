@@ -1,7 +1,10 @@
 // configuración de la base de datos
 import mongoose from 'mongoose';
 
-require('dotenv').config({path: 'variables.env'});
+import { config } from "dotenv";
+
+config({path: 'variables.env'});
+// require('dotenv').config({path: 'variables.env'});
 
 const conectarDB = async () => {
   mongoose.set("strictQuery", false);

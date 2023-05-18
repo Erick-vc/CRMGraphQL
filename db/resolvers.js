@@ -1,10 +1,13 @@
-import Usuarios from "../models/Usuarios";
-import Producto from "../models/Producto";
-import Cliente from "../models/Clientes";
-import Pedido from "../models/Pedido";
+import Usuarios from "../models/Usuarios.js";
+import Producto from "../models/Producto.js";
+import Cliente from "../models/Clientes.js";
+import Pedido from "../models/Pedido.js";
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
-require("dotenv").config({ path: "variables.env" });
+import { config } from "dotenv";
+
+config({path: 'variables.env'});
+// require("dotenv").config({ path: "variables.env" });
 // el de arriba para verificar y firmar el token tiene que ser la misma: SECRETAR
 
 const crearToken = (usuario, secreta, expiresIn) => {
@@ -92,7 +95,9 @@ const resolvers = {
     },
     obtenerPedidosVendedor: async (_, {}, ctx) => {
       try {
-        const pedidos = await Pedido.find({ vendedor: ctx.usuario.id }).populate('cliente');
+        const pedidos = await Pedido.find({
+          vendedor: ctx.usuario.id,
+        }).populate("cliente");
         return pedidos;
       } catch (error) {
         console.log(error);
@@ -183,6 +188,7 @@ const resolvers = {
     },
   },
 
+  //!
   Mutation: {
     //! USUARIO
     // * CREAR NUEVO USUARIO
